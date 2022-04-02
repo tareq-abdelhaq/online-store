@@ -1,6 +1,8 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&display=swap');
+html {
   box-sizing: border-box;
   font-size: 10px;
+  font-family: 'Raleway', sans-serif;
 }
 
 *,*::before,*::after
@@ -17,4 +19,7 @@ ul,ol,li
 a,button
 {
   border: none;
+  text-decoration: none;
+  background-color: transparent;
+  outline: none;
 }

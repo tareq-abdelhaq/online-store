@@ -2,6 +2,8 @@ import React from "react"
 import {query,graphQLEndPoint} from "../query"
 import axios from "axios"
 import WithErrorHandler from "../hoc/WithErrorHandler";
+import NavBar from "../components/NavBar/NavBar";
+import classes from "./App.module.css"
 
 
 class App extends React.Component
@@ -30,7 +32,9 @@ class App extends React.Component
   render() {
     return (
         <WithErrorHandler>
-            <h1>fetching the data</h1>
+        <div className={classes["App"]}>
+            <NavBar categories={this.state.data.categories.map(category => category.name)}/>
+        </div>
         </WithErrorHandler>
     );
   }

@@ -9,8 +9,10 @@ class NavBar extends React.Component
 
     render() {
         const categoryListItems = this.props.categories.map(category => {
-            return <li className={category === "clothes" ? classes["active"] : ""}>
-                        <a href="#">{category}</a>
+            return <li key={category} className={category === this.props.currentCategory ? classes["active"] : ""}>
+                        <a href="#" onClick={(e)=>this.props.changeCategory(category)}>
+                            {category}
+                        </a>
                    </li>
         })
         return (

@@ -1,0 +1,21 @@
+.Products
+{
+    width: 100%;
+    padding: 8rem 10rem 19rem;
+}
+
+.CategoryName
+{
+    font-size: 4.2rem;
+    font-weight: 400;
+    line-height: 6.7rem;
+    text-transform: capitalize;
+    color : #1D1F22;
+}
+
+.ProductsGrid
+{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10rem 4rem;
+}

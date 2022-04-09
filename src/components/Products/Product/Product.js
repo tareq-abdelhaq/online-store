@@ -1,13 +1,13 @@
 import {Component} from "react"
 import classes from "./Product.module.css"
 
-class Products extends Component
+class Product extends Component
 {
     render() {
         const price = {}
         this.props.prices.forEach(prc => {
-            if (prc.currency.symbol === "$"){
-                price.symbol = "$"
+            if (prc.currency.label === this.props.currency.label){
+                price.symbol = prc.currency.symbol
                 price.amount = prc.amount
             }
         })
@@ -30,4 +30,4 @@ class Products extends Component
     }
 }
 
-export default Products
+export default Product

@@ -5,7 +5,10 @@ import Product from "./Product/Product";
 class Products extends Component
 {
     render() {
-        const products = this.props.products.map(product => <Product key={product.id} {...product}/>)
+        const products = this.props.products.map(product => <Product key={product.id}
+                                                                     currency={this.props.currentCurrency}
+                                                                     {...product}
+                                                            />)
         return (
             <section className={classes.Products}>
                 <header className={classes.CategoryName}>

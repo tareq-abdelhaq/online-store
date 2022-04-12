@@ -8,6 +8,7 @@ class Products extends Component
         const products = this.props.products.map(product => <Product key={product.id}
                                                                      currency={this.props.currentCurrency}
                                                                      {...product}
+                                                                     showProductDescription={this.props.showProductDescription}
                                                             />)
         return (
             <section className={classes.Products}>

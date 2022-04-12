@@ -5,6 +5,7 @@ import WithErrorHandler from "../hoc/WithErrorHandler";
 import NavBar from "../components/NavBar/NavBar";
 import classes from "./App.module.css"
 import Products from "../components/Products/Products"
+import ProductDescription from "../components/Products/ProductDescription/ProductDescription";
 
 class App extends React.Component
 {
@@ -16,7 +17,9 @@ class App extends React.Component
             currentCurrency: {
                 symbol: "$",
                 label: "USD"
-            }
+            },
+            showProductDescription: false,
+            currentProduct: null
         }
     }
 
@@ -34,7 +37,7 @@ class App extends React.Component
       fetchData()
   }
   changeCategoryHandler = (name) => {
-        this.setState({currentCategory: name})
+        this.setState({currentCategory: name, showProductDescription: false})
   }
 
   currencyChangeHandler = ({label, symbol}) => {
@@ -42,6 +45,10 @@ class App extends React.Component
       currentCurrency.label = label;
       currentCurrency.symbol = symbol
       this.setState({currentCurrency: currentCurrency})
+  }
+
+  showProductDescriptionHandler = (id) => {
+        this.setState({showProductDescription: true,currentProduct: id})
   }
   render() {
       // filter products based on the currentCategory
@@ -55,6 +62,19 @@ class App extends React.Component
       let currencies = this.state.data.categories.length !== 0 && this.state.data.categories[0].products[0]
                        .prices.map(price => price.currency)
 
+     // determine which content to be shown
+     let content =  (
+        <Products currentCategory={this.state.currentCategory}
+                  currentCurrency= {this.state.currentCurrency}
+                  products={products}
+                  showProductDescription={this.showProductDescriptionHandler}
+        />
+     )
+     if (this.state.showProductDescription)
+     {
+         const product = this.state.data.categories[0].products.find((product) => product.id === this.state.currentProduct)
+         content = <ProductDescription {...product}/>
+     }
      return (
         <WithErrorHandler>
         <div className={classes["App"]}>
@@ -63,7 +83,7 @@ class App extends React.Component
                     currencies={currencies} currentCurrency={this.state.currentCurrency}
                     changeCurrency={this.currencyChangeHandler}
             />
-            <Products currentCategory={this.state.currentCategory} currentCurrency= {this.state.currentCurrency} products={products}/>
+            {content}
         </div>
         </WithErrorHandler>
     );

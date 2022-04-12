@@ -20,7 +20,7 @@ class Product extends Component
                     </div>
 
                     <div className={classes.ProductDetails}>
-                        <p className={classes.ProductName}>{this.props.name}</p>
+                        <p className={classes.ProductName} onClick={() => this.props.showProductDescription(this.props.id)}>{this.props.name}</p>
                         <p className={classes.ProductPrice}>{price.symbol}{price.amount}</p>
                     </div>
                 </div>

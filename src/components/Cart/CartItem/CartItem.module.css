@@ -1,0 +1,53 @@
+.CartItem
+{
+    display: flex;
+    justify-content: space-between;
+    padding-block: 2rem;
+    border-bottom: 1px solid #E5E5E5;
+}
+.ProductName
+{
+    font-size: 3rem;
+    font-weight: 600;
+    line-height: 27px;
+    color: #1D1F22;
+    margin-bottom: 1.6rem;
+}
+.ProductBrand
+{
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 27px;
+    color: #1D1F22;
+    margin-bottom: 1.2rem;
+}
+.ProductPrice
+{
+    width: 8rem;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 18px;
+    margin-bottom: 1.2rem;
+}
+.CartControls
+{
+    display: flex;
+}
+.ItemAmount
+{
+    margin-block: 3rem;
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 38px;
+    text-align: center;
+}
+.ProductImage
+{
+    width: 14rem;
+    height: 18.5rem;
+    object-fit: contain;
+    margin-left: 1.2rem;
+}

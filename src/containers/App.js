@@ -6,6 +6,7 @@ import NavBar from "../components/NavBar/NavBar";
 import classes from "./App.module.css"
 import Products from "../components/Products/Products"
 import ProductDescription from "../components/Products/ProductDescription/ProductDescription";
+import Cart from "../components/Cart/Cart";
 
 class App extends React.Component
 {
@@ -19,7 +20,9 @@ class App extends React.Component
                 label: "USD"
             },
             showProductDescription: false,
-            currentProduct: null
+            currentProduct: null,
+            showCart: false,
+            shoppingCart: []
         }
     }
 
@@ -37,7 +40,7 @@ class App extends React.Component
       fetchData()
   }
   changeCategoryHandler = (name) => {
-        this.setState({currentCategory: name, showProductDescription: false})
+        this.setState({currentCategory: name, showProductDescription: false, showCart: false})
   }
 
   currencyChangeHandler = ({label, symbol}) => {
@@ -48,7 +51,56 @@ class App extends React.Component
   }
 
   showProductDescriptionHandler = (id) => {
-        this.setState({showProductDescription: true,currentProduct: id})
+        this.setState({showProductDescription: true,showCart: false, currentProduct: id})
+  }
+  productAddedToCartHandler = (id) => {
+        // check if the product already exists in the cart or not
+        if (this.state.shoppingCart.find(item => item.product.id === id)){
+            return
+        }
+        const product = this.state.data.categories[0].products.find(product => product.id === id)
+        this.setState(prevState => {
+            return {
+                ...prevState,
+                shoppingCart: [...prevState.shoppingCart,{amount: 1, product: product}]
+            }
+        })
+  }
+  amountIncreasedHandler = (id) => {
+        const product = this.state.shoppingCart.find(item => item.product.id === id)
+        const updatedProduct = {...product}
+        updatedProduct.amount+=1;
+
+        this.setState(prevState => {
+            return {
+                ...prevState,
+                shoppingCart: prevState.shoppingCart.map(item => {return item.product.id !== id ? item : updatedProduct})
+            }
+        })
+  }
+  amountDecreasedHandler = (id) => {
+        const product = this.state.shoppingCart.find(item => item.product.id === id)
+        if (product.amount === 1){
+            this.setState(prevState => {
+                return {
+                    ...prevState,
+                    shoppingCart: prevState.shoppingCart.filter(item => item.product.id !== id)
+                }
+            })
+            return
+        }
+      const updatedProduct = {...product}
+      updatedProduct.amount-=1;
+
+      this.setState(prevState => {
+          return {
+              ...prevState,
+              shoppingCart: prevState.shoppingCart.map(item => {return item.product.id !== id ? item : updatedProduct})
+          }
+      })
+  }
+  cartShownHandler = () => {
+        this.setState({showCart: true,showProductDescription: false})
   }
   render() {
       // filter products based on the currentCategory
@@ -73,7 +125,14 @@ class App extends React.Component
      if (this.state.showProductDescription)
      {
          const product = this.state.data.categories[0].products.find((product) => product.id === this.state.currentProduct)
-         content = <ProductDescription {...product} currency={this.state.currentCurrency}/>
+         content = <ProductDescription {...product} currency={this.state.currentCurrency} addToCart={this.productAddedToCartHandler}/>
+     }
+     if (this.state.showCart)
+     {
+         content = <Cart cartProducts={this.state.shoppingCart} currency={this.state.currentCurrency}
+                         increaseAmount={this.amountIncreasedHandler}
+                         decreaseAmount={this.amountDecreasedHandler}
+                   />
      }
      return (
         <WithErrorHandler>
@@ -81,7 +140,8 @@ class App extends React.Component
             <NavBar categories={this.state.data.categories.map(category => category.name)}
                     changeCategory={this.changeCategoryHandler} currentCategory={this.state.currentCategory}
                     currencies={currencies} currentCurrency={this.state.currentCurrency}
-                    changeCurrency={this.currencyChangeHandler}
+                    changeCurrency={this.currencyChangeHandler} cartProducts={this.state.shoppingCart}
+                    showBag={this.cartShownHandler}
             />
             {content}
         </div>

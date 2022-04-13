@@ -1,0 +1,20 @@
+.Cart
+{
+    margin: 8rem 25rem 5.4rem 10rem;
+}
+.CartHeader
+{
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 40px;
+    color: #1D1F22;
+    text-transform: uppercase;
+    padding-bottom: 6rem;
+    border-bottom: 1px solid #E5E5E5;
+}
+.CartSeparator
+{
+    color: #E5E5E5;
+    height: 1px;
+    width: 100%;
+}

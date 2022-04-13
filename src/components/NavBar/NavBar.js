@@ -41,7 +41,12 @@ class NavBar extends React.Component
                             <img src={arrowUp} alt="dollar currency" className={classes.ArrowImage}/>
                         </button>
                     </li>
-                    <li><button><img src={cart} alt="shopping cart"/></button></li>
+                    <li className={classes.ShoppingCart}>
+                        <button onClick={this.props.showBag}>
+                            <img src={cart} alt="shopping cart"/>
+                        </button>
+                        {this.props.cartProducts.length !== 0 && <div className={classes.CartProductsNotification}> {this.props.cartProducts.length} </div>}
+                    </li>
                     {this.state.currencySwitcher && <CurrencySwitcher
                         currencies={this.props.currencies}
                         changeCurrency={this.props.changeCurrency}

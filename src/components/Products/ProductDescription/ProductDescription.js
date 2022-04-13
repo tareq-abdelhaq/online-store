@@ -46,13 +46,13 @@ class ProductDescription extends Component
                     </div>
                     <div className={classes.ProductDetails}>
                         <h2 className={classes.ProductName}>{this.props.name}</h2>
-                        <h2 className={classes.ProductBrand}>{this.props.brand}</h2>
+                        <p className={classes.ProductBrand}>{this.props.brand}</p>
                         <ProductAttributes attributes={this.props.attributes}/>
                         <div>
                             <h2 className={classes.ProductPrice}>price</h2>
                             <span>{productPrice.currency.symbol} {productPrice.amount}</span>
                         </div>
-                        <Button primary>add to cart</Button>
+                        <Button primary clicked={() => this.props.addToCart(this.props.id)}>add to cart</Button>
                         <div className={classes.ProductTextDescription} ref={this.productDescription}>
                         </div>
                     </div>

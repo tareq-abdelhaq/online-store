@@ -73,7 +73,7 @@ class App extends React.Component
      if (this.state.showProductDescription)
      {
          const product = this.state.data.categories[0].products.find((product) => product.id === this.state.currentProduct)
-         content = <ProductDescription {...product}/>
+         content = <ProductDescription {...product} currency={this.state.currentCurrency}/>
      }
      return (
         <WithErrorHandler>

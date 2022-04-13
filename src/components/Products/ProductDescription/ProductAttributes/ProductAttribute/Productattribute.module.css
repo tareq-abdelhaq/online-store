@@ -1,0 +1,17 @@
+.ProductAttribute
+{
+    margin-bottom: 0.8rem;
+}
+.AttributeName
+{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+.AttributeItems
+{
+    margin-top: 0.8rem;
+    display: flex;
+}

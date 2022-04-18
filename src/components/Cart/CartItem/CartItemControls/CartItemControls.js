@@ -4,11 +4,12 @@ import classes from "./CartItemControls.module.css"
 class CartItemControls extends Component
 {
     render() {
+        const classNames = [classes.Control,classes[this.props.className || ""]]
         return (
             <>
-                <div className={classes.ItemIncrement} onClick={this.props.increaseAmount}>+</div>
+                <div className={classNames.join(" ")} onClick={this.props.increaseAmount}>+</div>
                 {this.props.children}
-                <div className={classes.ItemDecrement} onClick={this.props.decreaseAmount}>-</div>
+                <div className={classNames.join(" ")} onClick={this.props.decreaseAmount}>-</div>
             </>
         );
     }

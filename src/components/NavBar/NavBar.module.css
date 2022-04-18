@@ -1,4 +1,4 @@
-.nav--bar
+.NavBar
 {
     width: 100%;
     height: 8rem;
@@ -6,7 +6,7 @@
     display: flex;
     justify-content: space-between;
 }
-.categories
+.Categories
 {
     display: flex;
     width: fit-content;
@@ -14,7 +14,7 @@
     align-self: start;
 
 }
-.categories li
+.Categories li
 {
     margin-right: 1.6rem;
     padding: .4rem 1.6rem 0;
@@ -24,24 +24,24 @@
     line-height: 19px;
     height: 5rem;
 }
-.categories li:last-child
+.Categories li:last-child
 {
     margin-right: 0;
 }
-.categories li.active
+.Categories li.active
 {
     font-weight: 600;
     border-bottom: 1px solid #5ECE7B;
 }
-.categories li.active a
+.Categories li.active a
 {
     color: #5ECE7B;
 }
-.categories li a
+.Categories li a
 {
     color: #1D1F22;
 }
-.logo
+.Logo
 {
     width: 4rem;
     height: 4rem;
@@ -92,4 +92,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+/*
+    media queries
+*/
+
+@media (max-width: 600px) {
+    .Logo
+    {
+        display: none;
+    }
+    .Categories li
+    {
+        padding: 0;
+    }
+    .NavBar
+    {
+        padding-inline: 1rem;
+    }
 }

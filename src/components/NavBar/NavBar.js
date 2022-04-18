@@ -6,6 +6,7 @@ import arrowUp from "../../assets/images/arrow-up.png"
 import CurrencySwitcher from "./CurrencySwitcher/CurrencySwitcher";
 
 
+
 class NavBar extends React.Component
 {
     state = {
@@ -23,17 +24,18 @@ class NavBar extends React.Component
     render() {
         const categoryListItems = this.props.categories.map(category => {
             return <li key={category} className={category === this.props.currentCategory ? classes["active"] : ""}>
-                        <a href="#" onClick={(e)=>this.props.changeCategory(category)}>
-                            {category}
-                        </a>
-                   </li>
+                <a href="#" onClick={(e)=>this.props.changeCategory(category)}>
+                    {category}
+                </a>
+            </li>
         })
         return (
-            <nav className={classes["nav--bar"]}>
-                <ul className={classes["categories"]}>
+
+            <nav className={classes.NavBar}>
+                <ul className={classes.Categories}>
                     {categoryListItems}
                 </ul>
-                <img src={logo} alt="scandiweb store front" className={classes["logo"]}/>
+                <img src={logo} alt="scandiweb store front" className={classes.Logo}/>
                 <ul className={classes.Others}>
                     <li className={classes.Currency}>
                         <button onClick={this.toggleCurrencySwitcher}>
@@ -42,7 +44,7 @@ class NavBar extends React.Component
                         </button>
                     </li>
                     <li className={classes.ShoppingCart}>
-                        <button onClick={this.props.showBag}>
+                        <button onClick={this.props.toggleCartOverlay}>
                             <img src={cart} alt="shopping cart"/>
                         </button>
                         {this.props.cartProducts.length !== 0 && <div className={classes.CartProductsNotification}> {this.props.cartProducts.length} </div>}

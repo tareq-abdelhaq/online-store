@@ -2,3 +2,7 @@
 {
     margin-bottom: 4rem;
 }
+.ProductAttributes.CartOverlay
+{
+    margin-bottom: 0;
+}

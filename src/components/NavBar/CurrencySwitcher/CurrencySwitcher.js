@@ -11,11 +11,11 @@ class CurrencySwitcher extends Component
     render() {
         const currenciesElements = this.props.currencies.map(currency => {
             return <li key={currency.label}><
-                        button onClick={() => this.changeCurrency(currency)}
-                        >
-                            {currency.symbol} {currency.label}
-                        </button>
-                  </li>
+                button onClick={() => this.changeCurrency(currency)}
+            >
+                {currency.symbol} {currency.label}
+            </button>
+            </li>
         })
         return (
             <ul className={classes.Currencies}>

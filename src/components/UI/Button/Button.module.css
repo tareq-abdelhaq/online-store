@@ -1,7 +1,5 @@
-.Primary
+.Primary,.Secondary
 {
-    color: #FFF;
-    background-color: #5ECE7B;
     cursor: pointer;
     font-size: 1.6rem;
     font-weight: 600;
@@ -9,4 +7,42 @@
     text-align: center;
     text-transform: uppercase;
     padding: 1.6rem 9.3rem;
+}
+.Primary
+{
+    color: #FFF;
+    background-color: #5ECE7B;
+}
+.Secondary
+{
+    color: #1D1F22;
+    background-color: #FFF;
+    border: 1px solid #1D1F22;
+}
+.Primary.CartOverlay,.Secondary.CartOverlay
+{
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 17px;
+}
+.Primary.CartOverlay
+{
+    padding: 1.6rem 3.6rem;
+}
+.Secondary.CartOverlay
+{
+    padding: 1.3rem 2.9rem;
+    margin-right: 1.2rem;
+}
+button:disabled
+{
+    cursor: not-allowed;
+    background-color: #CCC;
+}
+@media (max-width: 538px)
+{
+    .Primary.CartOverlay,.Secondary.CartOverlay
+    {
+        padding: 1rem 2rem;
+    }
 }

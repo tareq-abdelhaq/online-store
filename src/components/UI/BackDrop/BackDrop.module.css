@@ -1,0 +1,13 @@
+.BackDrop
+{
+    width: 100%;
+    min-height: 100vh;
+    overflow-y: scroll;
+    position: absolute;
+    top: 8rem;
+    bottom: 0;
+    background-color: #393748;
+    opacity: 22%;
+    z-index: 1;
+    cursor: pointer;
+}

@@ -5,6 +5,10 @@
     display: flex;
     flex-direction: column;
 }
+.AddedToCart
+{
+    box-shadow: 0 4px 35px 0 #A8ACB030;
+}
 .Product
 {
     margin: 1.6rem;
@@ -48,6 +52,14 @@
     transform: translate(-50%,-50%);
 
 }
+.CircleCart
+{
+    width: 52px;
+    height: 52px;
+    position: absolute;
+    top: 304px;
+    right: 31px;
+}
 .ProductDetails
 {
     margin-top: 2.4rem;
@@ -66,4 +78,27 @@
     font-size: 1.8rem;
     font-weight: 500;
     line-height: 29px;
+}
+@media (max-width: 792px) {
+    .ProductCard
+    {
+        width: 600px;
+        margin: auto;
+    }
+    .ProductImage
+    {
+        width: 90%;
+    }
+}
+@media (max-width: 472px)
+{
+    .ProductCard
+    {
+        width: 350px;
+        margin: auto;
+    }
+    .ProductImage
+    {
+        width: 100%;
+    }
 }

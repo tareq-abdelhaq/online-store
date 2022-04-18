@@ -19,3 +19,68 @@
     grid-template-columns: repeat(3,1fr);
     gap: 10rem 4rem;
 }
+
+.Paginate
+{
+    margin: 10rem auto 0;
+    width: fit-content;
+}
+.Pages
+{
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    font-size: 2rem;
+}
+.Pages li
+{
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.Pages li.PageActive
+{
+    background-color: #5ECE7B;
+    color: #FFF;
+}
+
+/*
+Responsive
+*/
+
+@media (max-width: 1186px) {
+    .ProductsGrid
+    {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (max-width: 792px) {
+    .ProductsGrid
+    {
+        grid-template-columns: 1fr;
+    }
+    .Products
+    {
+        padding-inline: 0;
+    }
+    .CategoryName
+    {
+        width: fit-content;
+        margin: auto;
+    }
+}
+@media (max-width: 472px) {
+    .Products
+    {
+        padding-inline: 0;
+    }
+    .CategoryName
+    {
+        width: fit-content;
+        margin: auto;
+    }
+}

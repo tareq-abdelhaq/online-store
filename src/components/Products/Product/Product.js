@@ -1,5 +1,6 @@
 import {Component} from "react"
 import classes from "./Product.module.css"
+import circleCart from "../../../assets/images/circle-icon.png"
 
 class Product extends Component
 {
@@ -11,12 +12,15 @@ class Product extends Component
                 price.amount = prc.amount
             }
         })
+        const classNames = [classes.ProductCard,!this.props.inStock && classes.OutOfStock, this.props.addedToCart && classes.AddedToCart]
         return (
-            <article className={[classes.ProductCard,!this.props.inStock && classes.OutOfStock].join(" ")}>
+            <article
+                className={classNames.join(" ")}>
                 <div className={classes.Product}>
                     <div>
                         {!this.props.inStock && <p className={classes.Out}> out of stock </p>}
                         <img src={this.props.gallery[0]} alt={this.props.name} className={classes.ProductImage}/>
+                        {this.props.addedToCart && <img className={classes.CircleCart} src={circleCart} alt="circular shopping cart"/>}
                     </div>
 
                     <div className={classes.ProductDetails}>
